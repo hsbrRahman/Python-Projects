@@ -1,0 +1,28 @@
+'''
+YouTube Video Downloader
+Author: Hasibur Rahman
+'''
+
+# importing the package
+from pytube import YouTube
+
+url = input("Please enter url: ")
+my_video = YouTube(url)
+
+print("Video Title is: ")
+# get Video Title
+print(my_video.title)
+
+print("Downloading the video: ")
+# get all the stream resolution for the
+for stream in my_video.streams:
+    print(stream)
+
+# set stream resolution
+my_video = my_video.streams.get_highest_resolution()
+
+# or
+# my_video = my_video.streams.first()
+
+# Download video
+my_video.download()
